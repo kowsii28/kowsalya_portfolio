@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kowsalya M — Semiconductor Enthusiast</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --wafer:#EDEAE0;
+    --wafer-line:#CFC9B6;
+    --die-dark:#1C2023;
+    --die-darker:#141719;
+    --ink:#1D2023;
+    --ink-soft:#5B594F;
+    --copper:#B5651D;
+    --copper-soft:#D68A45;
+    --teal:#1F6F5C;
+    --blue:#3A5A78;
+    --card:#F5F3EB;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--wafer);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+  }
+  h1,h2,h3{
+    font-family:'Space Grotesk', sans-serif;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  .mono{ font-family:'IBM Plex Mono', monospace; }
+  a{ color:var(--copper); text-decoration:none; border-bottom:1px solid rgba(181,101,29,0.35); }
+  a:hover{ border-bottom-color:var(--copper); }
+  .wrap{ max-width:900px; margin:0 auto; padding:0 28px; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:
+      radial-gradient(circle at 18% 20%, rgba(214,138,69,0.10), transparent 45%),
+      var(--die-dark);
+    color:#EDEAE0;
+    padding:76px 0 64px;
+    position:relative;
+    overflow:hidden;
+    border-bottom:3px solid var(--copper);
+  }
+  .hero .wrap{
+    display:flex;
+    align-items:center;
+    gap:48px;
+    justify-content:space-between;
+  }
+  .hero-text{ flex:1 1 380px; min-width:280px; }
+  .pin1{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--copper-soft);
+    margin-bottom:18px;
+  }
+  .pin1::before{
+    content:"";
+    width:6px; height:6px;
+    background:var(--copper-soft);
+    border-radius:50%;
+  }
+  .hero h1{
+    font-size:clamp(34px, 5vw, 52px);
+    color:#F3F1E8;
+    font-weight:700;
+  }
+  .hero .role{
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--teal);
+    background:rgba(31,111,92,0.14);
+    border:1px solid rgba(31,111,92,0.4);
+    display:inline-block;
+    padding:4px 10px;
+    font-size:13px;
+    margin-top:14px;
+    letter-spacing:0.02em;
+  }
+  .hero p.lead{
+    margin-top:22px;
+    max-width:46ch;
+    color:#C9C6BA;
+    font-size:15.5px;
+  }
+  .contact-row{
+    margin-top:28px;
+    display:flex;
+    flex-direction:column;
+    gap:11px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13.5px;
+  }
+  .contact-row .c-item{ display:flex; align-items:center; gap:10px; }
+  .contact-row .c-item .ico{ font-size:15px; line-height:1; }
+  .contact-row a{ color:#D8D5C8; border-bottom:1px solid rgba(255,255,255,0.25); }
+  .contact-row a:hover{ color:var(--copper-soft); border-bottom-color:var(--copper-soft); }
+
+  /* quote panel */
+  .quote-box{ flex:0 0 380px; display:flex; align-items:center; }
+  .hero-quote-block{
+    border-left:3px solid var(--copper);
+    padding-left:20px;
+  }
+  .hero-quote{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:19px;
+    line-height:1.5;
+    color:#EDEAE0;
+    margin:0;
+    min-height:3.2em;
+    opacity:1;
+    transition:opacity 0.5s ease;
+  }
+
+  /* ---------- SECTIONS ---------- */
+  section{ padding:52px 0; border-bottom:1px solid var(--wafer-line); }
+  section:last-of-type{ border-bottom:none; }
+
+  .sec-head{
+    display:flex;
+    align-items:baseline;
+    gap:12px;
+    margin-bottom:26px;
+  }
+  .sec-head .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--ink-soft);
+    border:1px solid var(--wafer-line);
+    padding:2px 7px;
+  }
+  .sec-head h2{ font-size:24px; font-weight:600; }
+
+  p{ color:var(--ink); max-width:68ch; text-align:justify; text-justify:inter-word; }
+  .lead-p{ color:var(--ink-soft); max-width:64ch; }
+
+  ul.clean{ list-style:none; margin:0; padding:0; }
+  ul.clean li{
+    position:relative;
+    padding-left:20px;
+    margin-bottom:9px;
+    color:var(--ink);
+    max-width:70ch;
+  }
+  ul.clean li::before{
+    content:"";
+    position:absolute;
+    left:0; top:8px;
+    width:7px; height:7px;
+    background:var(--copper);
+  }
+
+  /* ---------- TIMELINE ---------- */
+  .timeline{ position:relative; padding-left:26px; }
+  .timeline::before{
+    content:"";
+    position:absolute; left:5px; top:6px; bottom:6px;
+    width:2px;
+    background:repeating-linear-gradient(to bottom, var(--wafer-line) 0 6px, transparent 6px 11px);
+  }
+  .t-item{ position:relative; margin-bottom:34px; }
+  .t-item:last-child{ margin-bottom:0; }
+  .t-item::before{
+    content:"";
+    position:absolute; left:-26px; top:4px;
+    width:12px; height:12px;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #F3EFE2, var(--wafer) 55%, #D9D4C4 100%);
+    border:2px solid var(--copper);
+    box-shadow:0 2px 4px rgba(0,0,0,0.25), inset 0 1px 1px rgba(255,255,255,0.6);
+  }
+  .t-item .role-line{
+    display:flex; flex-wrap:wrap; align-items:baseline;
+    justify-content:space-between; gap:8px; margin-bottom:2px;
+  }
+  .t-item h3{ font-size:17px; font-weight:600; }
+  .t-item .period{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--copper);
+  }
+  .t-item .org{ color:var(--ink-soft); font-size:14px; margin-bottom:10px; }
+
+  /* ---------- SPEC CARD (flagship tapeout) ---------- */
+  .spec-card{
+    background:var(--card);
+    color:var(--ink);
+    padding:28px 30px;
+    border:1px solid var(--wafer-line);
+    border-left:4px solid var(--copper);
+    box-shadow:0 1px 2px rgba(0,0,0,0.06);
+    transform:translateY(0) rotateX(0deg);
+    transform-style:preserve-3d;
+    transition:transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .spec-card:hover{
+    transform:translateY(-6px) rotateX(2deg);
+    box-shadow:0 22px 30px rgba(28,32,35,0.18);
+  }
+  .spec-card h3{ font-size:19px; color:var(--ink); margin-bottom:6px; }
+  .spec-card .sub{ color:var(--ink-soft); font-size:14px; margin-bottom:20px; }
+  .spec-grid{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0,1fr));
+    gap:14px 28px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    margin-bottom:20px;
+  }
+  .spec-grid div{ border-top:1px solid var(--wafer-line); padding-top:8px; }
+  .spec-grid span{ display:block; color:var(--ink-soft); font-size:11px; margin-bottom:4px; }
+  .spec-grid strong{ color:var(--ink); font-weight:500; }
+  .spec-card ul.clean li::before{ background:var(--copper); }
+  .spec-card ul.clean li{ color:var(--ink); }
+
+  /* ---------- PROJECTS ---------- */
+  .proj{ margin-bottom:30px; }
+  .proj:last-child{ margin-bottom:0; }
+  .proj-head{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:8px; align-items:baseline; }
+  .proj h3{ font-size:17px; font-weight:600; }
+  .proj .period{ font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--blue); }
+  .proj p{ margin:8px 0 0; font-size:14.5px; color:var(--ink-soft); }
+
+  /* ---------- SKILLS ---------- */
+  .skill-groups{ display:grid; grid-template-columns:repeat(auto-fit, minmax(230px,1fr)); gap:26px 30px; }
+  .skill-group h3{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    text-transform:none;
+    color:var(--ink-soft);
+    font-weight:500;
+    margin-bottom:10px;
+    padding-bottom:6px;
+    border-bottom:2px solid var(--copper);
+    display:inline-block;
+  }
+  .chips{ display:flex; flex-wrap:wrap; gap:7px; }
+  .chip{
+    font-size:13px;
+    padding:4px 10px;
+    border:1px solid var(--wafer-line);
+    background:var(--card);
+    color:var(--ink);
+    box-shadow:0 1px 0 var(--wafer-line), 0 2px 3px rgba(0,0,0,0.05);
+    transform:translateY(0);
+    transition:transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  }
+  .chip:hover{
+    transform:translateY(-2px);
+    border-color:var(--copper);
+    box-shadow:0 4px 8px rgba(181,101,29,0.22);
+  }
+
+  /* ---------- ACHIEVEMENTS / EDU ---------- */
+  .two-col{ display:grid; grid-template-columns:1.3fr 1fr; gap:48px; }
+  @media (max-width:720px){ .two-col{ grid-template-columns:1fr; } }
+  .edu-item{ margin-bottom:18px; }
+  .edu-item:last-child{ margin-bottom:0; }
+  .edu-item h3{ font-size:15.5px; font-weight:600; }
+  .edu-item .period{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--teal); }
+  .edu-item .meta{ font-size:13.5px; color:var(--ink-soft); }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--die-darker);
+    color:#B9B6A9;
+    padding:38px 0;
+    text-align:left;
+    font-size:13.5px;
+  }
+  footer .wrap{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:16px; align-items:center; }
+  footer a{ color:#D8D5C8; border-bottom:1px solid rgba(255,255,255,0.25); }
+  footer .mark{ font-family:'IBM Plex Mono', monospace; color:var(--copper-soft); font-size:12px; }
+
+  @media (max-width:760px){
+    .hero .wrap{ flex-direction:column; text-align:left; }
+    .spec-grid{ grid-template-columns:1fr; }
+  }
+
+  :focus-visible{ outline:2px solid var(--copper); outline-offset:2px; }
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-text">
+      <div class="pin1">PIN&nbsp;1 &nbsp;·&nbsp; U1</div>
+      <h1>Kowsalya&nbsp;M</h1>
+      <span class="role">Semiconductor Enthusiast</span>
+      <p class="lead">Turning RISC-V instruction sets into the full silicon lifecycle, from RTL to GDSII.</p>
+      <div class="contact-row">
+        <div class="c-item"><span class="ico">📧</span><a href="mailto:kowsalyamatharaj2809@gmail.com">kowsalyamatharaj2809@gmail.com</a></div>
+        <div class="c-item"><span class="ico">📞</span><a href="tel:7373322887">7373322887</a></div>
+        <div class="c-item"><span class="ico">💼</span><a href="https://linkedin.com/in/kowsalyamatharaj" target="_blank" rel="noopener">linkedin.com/in/kowsalyamatharaj</a></div>
+        <div class="c-item"><span class="ico">💻</span><a href="https://github.com/kowsii28" target="_blank" rel="noopener">github.com/kowsii28</a></div>
+      </div>
+    </div>
+    <div class="quote-box">
+      <div class="hero-quote-block">
+        <p class="hero-quote" id="hero-quote" aria-live="polite">Progress in silicon is really a story about vision — about what an engineer dares to believe is possible.</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="sec-head"><span class="tag mono">U2</span><h2>Profile</h2></div>
+      <p class="lead-p">I work at the point where an instruction set meets silicon — wiring RISC-V cores to memory-mapped peripherals, pushing RTL through synthesis and place-and-route, and reading timing reports the way other people read email. My interest sits specifically in SoC-level integration: making sure every bus, every register, and every pin does exactly what the datasheet says it will.</p>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience">
+      <div class="sec-head"><span class="tag mono">U3</span><h2>Experience</h2></div>
+      <div class="timeline">
+
+        <div class="t-item">
+          <div class="role-line">
+            <h3>RISC-V Design Intern</h3>
+            <span class="period">May – Aug 2025</span>
+          </div>
+          <div class="org">CEG Fabless, Anna University — with Vyoma Systems &amp; Shakti Processor Group, IIT Madras</div>
+          <ul class="clean">
+            <li>Completed a 4-week deep dive into RISC-V privileged and unprivileged ISA specs, CSR operations, and debugging, alongside the SHAKTI C-Class processor.</li>
+            <li>Set up a Docker-based development environment for the Shakti C-Class core and studied SoC integration workflows, analysing bus protocols and RTC peripheral conversion approaches.</li>
+          </ul>
+        </div>
+
+        <div class="t-item">
+          <div class="role-line">
+            <h3>Cloud Intern</h3>
+            <span class="period">Jun – Jul 2025</span>
+          </div>
+          <div class="org">Bootlabs, India</div>
+          <ul class="clean">
+            <li>Built hands-on fluency in Linux administration and AWS — VPC networking, EC2 deployment, S3/EBS storage, and IAM access control.</li>
+            <li>Configured multi-tier cloud infrastructure with network segmentation and security best practices.</li>
+          </ul>
+        </div>
+
+        <div class="t-item">
+          <div class="role-line">
+            <h3>RISC-V SoC Chip Tapeout — Phase I</h3>
+            <span class="period">Sep – Nov 2025</span>
+          </div>
+          <div class="org">India RISC-V SoC Tapeout Program — VLSI System Design &amp; IIT Gandhinagar</div>
+          <ul class="clean">
+            <li>Carried VSDBabySoC through the complete RTL-to-GDSII flow on the SKY130 PDK using OpenLane, Yosys, and OpenROAD.</li>
+            <li>Handled synthesis, timing analysis, and physical design implementation across the 10-week program.</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="sec-head"><span class="tag mono">U4</span><h2>Projects</h2></div>
+
+      <div class="proj">
+        <div class="proj-head">
+          <h3>RISC-V Based Vital Signs Monitoring SoC — 1-TOPS, VLSI Society of India</h3>
+          <span class="period">Ongoing</span>
+        </div>
+        <p>Contributing to SoC integration on the PULP Platform's AXI infrastructure — interfacing an RV32IM core with GPIO, I2C, SPI, Timer, and Interrupt Controller peripherals through top-level integration and memory mapping.</p>
+      </div>
+
+      <div class="proj">
+        <div class="proj-head">
+          <h3>5G-Based Remote Hand Gesture Replication System</h3>
+          <span class="period">Jan – May 2026</span>
+        </div>
+        <p>Designed a 5G-enabled system for real-time gesture transmission, using low-latency communication to sharpen responsiveness and interaction accuracy.</p>
+      </div>
+
+      <div class="proj">
+        <div class="proj-head">
+          <h3>Simplified PCIe Endpoint — Design &amp; Verification</h3>
+          <span class="period">Jul 2026</span>
+        </div>
+        <p>Implemented a PCIe Endpoint Transaction Layer in SystemVerilog supporting Memory and Configuration transactions, with a full testbench architecture across multiple test cases.</p>
+      </div>
+
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="sec-head"><span class="tag mono">U5</span><h2>Skills</h2></div>
+      <div class="skill-groups">
+
+        <div class="skill-group">
+          <h3>Hardware Description</h3>
+          <div class="chips"><span class="chip">Verilog HDL</span><span class="chip">VHDL</span><span class="chip">SystemVerilog</span></div>
+        </div>
+
+        <div class="skill-group">
+          <h3>VLSI Fundamentals</h3>
+          <div class="chips"><span class="chip">Digital Logic Design</span><span class="chip">CMOS VLSI Design</span><span class="chip">Computer Architecture</span><span class="chip">Static Timing Analysis</span></div>
+        </div>
+
+        <div class="skill-group">
+          <h3>EDA Tools</h3>
+          <div class="chips"><span class="chip">Cadence Virtuoso</span><span class="chip">Xcelium</span><span class="chip">Genus</span><span class="chip">Innovus</span></div>
+        </div>
+
+        <div class="skill-group">
+          <h3>Open-Source EDA</h3>
+          <div class="chips"><span class="chip">Yosys</span><span class="chip">Icarus Verilog</span><span class="chip">GTKWave</span><span class="chip">OpenROAD</span><span class="chip">OpenLane</span><span class="chip">Magic</span><span class="chip">OpenSTA</span></div>
+        </div>
+
+        <div class="skill-group">
+          <h3>Hardware Platforms</h3>
+          <div class="chips"><span class="chip">Xilinx Vivado (FPGA)</span><span class="chip">ESP32</span><span class="chip">Arduino</span></div>
+        </div>
+
+        <div class="skill-group">
+          <h3>Programming</h3>
+          <div class="chips"><span class="chip">C</span><span class="chip">C++</span><span class="chip">Assembly</span></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FLAGSHIP SPEC -->
+    <section id="flagship">
+      <div class="sec-head"><span class="tag mono">U6</span><h2>Flagship: VSDBabySoC Tapeout</h2></div>
+      <div class="spec-card">
+        <h3>RTL → GDSII, start to finish</h3>
+        <div class="sub">Open-source ASIC flow · SKY130 PDK · India RISC-V SoC Tapeout Program</div>
+        <div class="spec-grid">
+          <div><span>PDK</span><strong>SKY130</strong></div>
+          <div><span>Flow</span><strong>RTL → GDSII</strong></div>
+          <div><span>Toolchain</span><strong>OpenLane · Yosys · OpenROAD</strong></div>
+          <div><span>Stage</span><strong>Synthesis · STA · Physical Design</strong></div>
+        </div>
+        <ul class="clean">
+          <li>Carried the design through floorplanning, placement, and routing within the 10-week Phase-I timeline.</li>
+          <li>Worked entirely on Oracle VM (Linux), version-controlled through GitHub.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ACHIEVEMENTS + EDUCATION -->
+    <section id="details">
+      <div class="two-col">
+        <div>
+          <div class="sec-head"><span class="tag mono">U7</span><h2>Achievements</h2></div>
+          <ul class="clean">
+            <li>Top 37 of 500+ teams nationwide — VLSI Society of India's 1-TOPS SoC Program.</li>
+            <li>NPTEL: Principles of Communication Systems I — Elite, 91%.</li>
+            <li>Best Outgoing Student (Gold Medal) — Diploma in ECE.</li>
+            <li>State-Level Winner, Tennikoit — IPAA State Tournament, 2022–23.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sec-head"><span class="tag mono">U8</span><h2>Education</h2></div>
+          <div class="edu-item">
+            <h3>B.E., Electronics &amp; Communication</h3>
+            <div class="period">Aug 2024 – Present</div>
+            <div class="meta">College of Engineering Guindy, Anna University · CGPA 8.65/10</div>
+          </div>
+          <div class="edu-item">
+            <h3>Diploma, Electronics &amp; Communication</h3>
+            <div class="period">Aug 2021 – Apr 2024</div>
+            <div class="meta">Sakthi Polytechnic College · 99%</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="mark">EOF · KOWSALYA-M · REV 1.0</span>
+    <span>Let's build silicon — <a href="mailto:kowsalyamatharaj2809@gmail.com">reach out</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var el = document.getElementById('hero-quote');
+  if (!el) return;
+  var quotes = [
+    'In software, Ctrl+Z exists. In silicon, tape-out means tape your eyes open and pray.',
+    'Metastability is proof that even flip-flops have commitment issues.',
+    'Verification: The paranoid discipline of breaking your own chip before the customer does.',
+    'A software bug asks for a patch. A silicon bug asks for a re-spin and non-disclosure agreements.',
+    'Software borrows its stage from hardware; silicon builds the theater.',
+    'VLSI: Where "it works in simulation" are famous last words.',
+    'We don\u2019t just draw circuits — we lay out entire cities on a sliver of silicon.',
+    'A setup violation is a heart attack; a hold violation is instant death.',
+    'Silicon doesn\u2019t care about your feelings — it only cares about signal integrity and thermal dissipation.',
+    'Every Rev-A silicon is just an expensive heater until Rev-B arrives.',
+    'I spend 90% of my life fighting clock skew just to save 100 picoseconds. Worth it.',
+    'Turning RTL into physical reality, one gate at a time.',
+    'Where Boolean algebra meets solid-state physics.',
+    'Designing the invisible architecture behind everything visible.',
+    'Moore\u2019s Law giveth transistors; power density taketh them away.',
+    'Static timing analysis exists because "it probably works" was never a signoff criterion.',
+    'Floorplanning is just interior design for electrons.',
+    'An ASIC has no undo button — only a very expensive redo.',
+    'DRC clean doesn\u2019t mean you sleep clean the night before tape-out.'
+  ];
+  var i = 0;
+  setInterval(function(){
+    i = (i + 1) % quotes.length;
+    el.style.opacity = 0;
+    setTimeout(function(){
+      el.textContent = quotes[i];
+      el.style.opacity = 1;
+    }, 500);
+  }, 3800);
+})();
+</script>
+</body>
+</html>
